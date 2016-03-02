@@ -12,15 +12,15 @@ class MoviesController < ApplicationController
 
   def index
     if params[:sort_by=>"alpha"]
-   # @movies = Movie.order(title :desc)
-   flash[:notice] = "Sorting by alpha"
-     @movies = Movie.find(@movie.title == 'Aladdin')
+     return @movies = Movie.find(@movie.title == 'Aladdin')
     end
     if params[:sort_by=>"date"]
-    @movies = Movie.order(release_date :desc)
+    return @movies = Movie.order(release_date :desc)
     end
+    
     @movies = Movie.all
   end
+  
   
   #def index(params)
   
