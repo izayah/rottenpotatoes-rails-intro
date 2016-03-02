@@ -51,9 +51,6 @@ class MoviesController < ApplicationController
   end
   
   def rating
-    #@all_ratings = ['G', 'PG', 'PG-13', 'R']
-    #@all_ratings = Movie.select(:ratings).map(&:ratings).uniq
-    #@all_ratings = Movies.select("DISTINCT(RATINGS)")
     @all_ratings = Movies.uniq.pluck(:rating)
      
   end
