@@ -14,14 +14,14 @@ class MoviesController < ApplicationController
     @movies = Movie.all
   end
   
-  #def index(params)
-   # if params == "alpha"
-    #@movies = Movie.order(title :desc)
-    #end
-    #if params == "date"
-    #@movies = Movie.order(release_date :desc)
-    #end
-  #end
+  def index(params)
+    if params[:sort_by] == "alpha"
+    @movies = Movie.order(title :desc)
+    end
+    if params[:sort_by] == "date"
+    @movies = Movie.order(release_date :desc)
+    end
+  end
 
   def new
     # default: render 'new' template
