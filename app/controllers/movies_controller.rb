@@ -11,6 +11,8 @@ class MoviesController < ApplicationController
   end
 
   def index
+    @all_ratings = Movies.uniq.pluck(:rating)
+     
     @sorting_style = params[:sort_by]
     if @sorting_style == "alpha"
      return @movies = Movie.order(title: :asc)
@@ -48,11 +50,6 @@ class MoviesController < ApplicationController
     @movie.destroy
     flash[:notice] = "Movie '#{@movie.title}' deleted."
     redirect_to movies_path
-  end
-  
-  def rating
-    @all_ratings = Movies.uniq.pluck(:rating)
-     
   end
 
 end
