@@ -50,10 +50,11 @@ class MoviesController < ApplicationController
     redirect_to movies_path
   end
   
-  def ratings
+  def rating
     #@all_ratings = ['G', 'PG', 'PG-13', 'R']
     #@all_ratings = Movie.select(:ratings).map(&:ratings).uniq
-    @all_ratings = Movies.select("DISTINCT(RATINGS)")
+    #@all_ratings = Movies.select("DISTINCT(RATINGS)")
+    @all_ratings = Movies.uniq.pluck(:rating)
      
   end
 
