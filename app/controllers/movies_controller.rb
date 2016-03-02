@@ -12,7 +12,7 @@ class MoviesController < ApplicationController
 
   def index
     if params[:sort_by] == "alpha"
-     return @movies = Movie.order 
+     return @movies = Movie.order(title: :desc)
     end
     if params[:sort_by] == "date"
     return @movies = Movie.order(release_date: :desc)
