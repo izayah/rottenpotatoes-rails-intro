@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
     if params[:sort_by=>"alpha"]
    # @movies = Movie.order(title :desc)
    flash[:notice] = "Sorting by alpha"
-     @movies = Movie.find(@movie.title = 'Aladdin')
+     @movies = Movie.find(@movie.title == 'Aladdin')
     end
     if params[:sort_by=>"date"]
     @movies = Movie.order(release_date :desc)
