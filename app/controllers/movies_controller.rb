@@ -11,8 +11,8 @@ class MoviesController < ApplicationController
   end
 
   def index
-    @all_ratings = 'G'
-    #@all_ratings = Movies.uniq.pluck(:rating)
+    @all_ratings = ['G','PG','PG-13','R']
+    
      
     @sorting_style = params[:sort_by]
     if @sorting_style == "alpha"
