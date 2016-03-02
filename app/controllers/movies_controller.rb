@@ -11,11 +11,12 @@ class MoviesController < ApplicationController
   end
 
   def index
+    @style = params[:sort_by]
     if params[:sort_by] == "alpha"
      return @movies = Movie.order(title: :asc)
     end
     if params[:sort_by] == "date"
-      @release_date_header = "hilite"
+      #@release_date_header = "hilite"
     return @movies = Movie.order(release_date: :asc)
     end
     @movies = Movie.all
