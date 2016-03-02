@@ -11,10 +11,10 @@ class MoviesController < ApplicationController
   end
 
   def index
-    if params[:sort_by=>"alpha"]
+    if params[:sort_by] == "alpha"
      return @movies = Movie.find(title == 'Aladdin')
     end
-    if params[:sort_by=>"date"]
+    if params[:sort_by] == "date"
     return @movies = Movie.order(release_date :desc)
     end
     @movies = Movie.all
