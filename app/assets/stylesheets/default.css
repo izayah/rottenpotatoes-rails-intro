@@ -64,8 +64,8 @@ table#movies th.hilite {
   background-color: yellow;
 }
 
-/*.hilite th:visited  {
+.hilite a:visited  {
  background-color: yellow;
-}*/
+}
 
 
