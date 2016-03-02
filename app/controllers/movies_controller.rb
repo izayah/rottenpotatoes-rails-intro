@@ -13,21 +13,14 @@ class MoviesController < ApplicationController
   def index
     if params[:sort_by] == "alpha"
      @title_header = 'hilite'
-     #@release_date_header = "hilite"
      return @movies = Movie.order(title: :asc)
     end
     if params[:sort_by] == "date"
-      #@title_header = "hilite"
       @release_date_header = "hilite"
     return @movies = Movie.order(release_date: :asc)
     end
     @movies = Movie.all
   end
-  
-  
-  #def index(params)
-  
-  #end
 
   def new
     # default: render 'new' template
