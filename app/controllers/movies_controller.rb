@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
       ratings_filter = params["ratings"].keys
      end
      
-     @movies = Movie.find(params[:rating =>'G'])
+     @movies = Movie.where("rating =?", ratings_filter)
     
     if @sorting_style == "alpha"
       @title_sort=true
