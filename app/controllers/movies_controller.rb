@@ -15,21 +15,22 @@ class MoviesController < ApplicationController
     @title_sort = false
     @release_date_sort = false
     
-    if params["ratings"].nil?
-      ratings_filter = @all_ratings
-    else
-      ratings_filter = params["ratings"].keys
-    end
+   # if params["ratings"].nil?
+     # ratings_filter = @all_ratings
+   # else
+   #   ratings_filter = params["ratings"].keys
+   # end
     
-    @checked = Movie.checked ratings_filter
-    @movies = Movie.order(params[:sort]).find(:all,
-           :conditions => { :rating => ratings_filter })
+    #@checked = Movie.checked ratings_filter
+  #  @movies = Movie.order(params[:sort]).find(:all,
+   #        :conditions => { :rating => ratings_filter })
     
-    if params[:sort] == "alpha"
+    if params[:sort_by] == "alpha"
+      @title_sort = true
      return @movies = Movie.order(title: :asc)
     end
-    if params[:sort] == "date"
-      #@release_date_header = "hilite"
+    if params[:sort_by] == "date"
+      @release_date_sort = true
     return @movies = Movie.order(release_date: :asc)
     end
     @movies = Movie.all
