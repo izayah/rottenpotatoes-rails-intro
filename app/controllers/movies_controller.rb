@@ -1,5 +1,5 @@
 class MoviesController < ApplicationController
-
+debugger
   def movie_params
     params.require(:movie).permit(:title, :rating, :description, :release_date)
   end
@@ -13,7 +13,6 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = ['G', 'PG', 'PG-13', 'R']
     @sorting_style = params[:sort_by]
-    debugger
      if params[:ratings].nil?
       ratings_filter = @all_ratings
      else
