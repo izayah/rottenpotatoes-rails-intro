@@ -12,30 +12,23 @@ class MoviesController < ApplicationController
 
   def index
     @all_ratings = ['G', 'PG', 'PG-13', 'R']
-   # @title_sort = false
-   #@release_date_sort = false
-    
-   # if params["ratings"].nil?
-     # ratings_filter = @all_ratings
-   # else
-   #   ratings_filter = params["ratings"].keys
-   # end
-    
-    #@checked = Movie.checked ratings_filter
-  #  @movies = Movie.order(params[:sort]).find(:all,
-   #        :conditions => { :rating => ratings_filter })
-    
-    if params[:sort_by] == "alpha"
-      @title_sort = true
+    @sorting_style = params[:sort_by]
+    if @sorting_style == "alpha"
      return @movies = Movie.order(title: :asc)
     end
-    
-    if params[:sort_by] == "date"
-      @release_date_sort = true
+    if @sorting_style == "date"
+      #@release_date_header = "hilite"
     return @movies = Movie.order(release_date: :asc)
     end
     @movies = Movie.all
   end
+  
+  
+  
+  
+  
+  
+  
 
   def new
     # default: render 'new' template
