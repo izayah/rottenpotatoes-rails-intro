@@ -14,6 +14,17 @@ class MoviesController < ApplicationController
     @all_ratings = ['G', 'PG', 'PG-13', 'R']
     @title_sort = false
     @release_date_sort = false
+    
+    if params["ratings"].nil?
+      ratings_filter = @all_ratings
+    else
+      ratings_filter = params["ratings"].keys
+    end
+    
+    @checked = Movie.checked ratings_filter
+    @movies = Movie.order(params[:sort]).find(:all,
+           :conditions => { :rating => ratings_filter })
+    
     if params[:sort] == "alpha"
      return @movies = Movie.order(title: :asc)
     end
