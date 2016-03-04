@@ -12,11 +12,11 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = ['G', 'PG', 'PG-13', 'R']
     @sorting_style = params[:sort_by]
-    # if params[:ratings].nil?
-     # ratings_filter = @all_ratings
-    # else
-     # ratings_filter = params["ratings"].keys
-     #end
+     if params[:ratings].nil?
+      ratings_filter = @all_ratings
+     else
+      ratings_filter = params["ratings"].keys
+     end
      
      #@movies = Movie.all #order(params[:sort_by]).find(:all, :conditions => { :rating => @all_ratings })
     
