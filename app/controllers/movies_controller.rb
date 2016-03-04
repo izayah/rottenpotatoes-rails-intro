@@ -13,14 +13,14 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = ['G', 'PG', 'PG-13', 'R']
     @sorting_style = params[:sort_by]
-    
+    debugger
      if params[:ratings].nil?
       ratings_filter = @all_ratings
      else
       ratings_filter = params["ratings"].keys
      end
      
-     @movies = Movie.find({ :rating =>'G' })
+     @movies = Movie.find({:rating =>'G' })
     
     if @sorting_style == "alpha"
       @title_sort=true
