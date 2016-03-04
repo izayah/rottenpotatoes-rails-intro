@@ -17,7 +17,6 @@ class MoviesController < ApplicationController
      return @movies = Movie.order(title: :asc)
     end
     if @sorting_style == "date"
-      #@release_date_header = "hilite"
     return @movies = Movie.order(release_date: :asc)
     end
     @movies = Movie.all
