@@ -18,12 +18,12 @@ class MoviesController < ApplicationController
       ratings_filter = params[:ratings]
      end
      
-    @selected = Movie.checked ratings filter
+    
     
     if @sorting_style == "alpha"
       @title_sort=true
-     return @movies = Movie.order(title: :asc)
-    # return @movies = Movie.where("rating = ?", ).order(title: :asc)
+     #return @movies = Movie.order(title: :asc)
+    return @movies = Movie.where("rating = ?", params[:ratings]).order(title: :asc)
     end
    if @sorting_style == "date"
      @release_date_sort=true
