@@ -18,17 +18,17 @@ class MoviesController < ApplicationController
       ratings_filter = params["ratings"].keys
      end
      
-      return @movies = Movie.find(:rating => 'G')
+      filtered = Movies.all
     
     if @sorting_style == "alpha"
       @title_sort=true
-     return @movies = Movie.order(title: :asc)
+     return @movies = filtered.order(title: :asc)
     end
    if @sorting_style == "date"
      @release_date_sort=true
-   return @movies = Movie.order(release_date: :asc)
+   return @movies = filtered.order(release_date: :asc)
    end
-    @movies = Movie.all
+    @movies = filtered
   end
   
   def new
