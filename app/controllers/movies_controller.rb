@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
       ratings_filter = params["ratings"].keys
      end
      
-     @movies = Movie.find(:all, :conditions => { :rating => ratings_filter })
+     @movies = Movie.find(:conditions => { :rating => ratings_filter })
     
     if @sorting_style == "alpha"
       @title_sort=true
