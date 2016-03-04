@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
       ratings_filter = params[:ratings]
      end
      
-    ratings_filter.inspect
+    @selected = Movie.checked ratings filter
     
     if @sorting_style == "alpha"
       @title_sort=true
