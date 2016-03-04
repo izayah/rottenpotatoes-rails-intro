@@ -13,6 +13,8 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = ['G', 'PG', 'PG-13', 'R']
     @sorting_style = params[:sort_by]
+    @checked = Movie.checked ratings_filter
+    
     if @sorting_style == "alpha"
       @title_sort=true
      return @movies = Movie.order(title: :asc)
