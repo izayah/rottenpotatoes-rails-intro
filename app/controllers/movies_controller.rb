@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
       ratings_filter = params["ratings"].keys
      end
      
-    #filtered = Movies.all
+   debug params
     
     if @sorting_style == "alpha"
       @title_sort=true
