@@ -25,13 +25,6 @@ class MoviesController < ApplicationController
     @movies = Movie.all
   end
   
-  
-  
-  
-  
-  
-  
-
   def new
     # default: render 'new' template
   end
