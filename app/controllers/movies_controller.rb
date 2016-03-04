@@ -12,8 +12,8 @@ class MoviesController < ApplicationController
 
   def index
     @all_ratings = ['G', 'PG', 'PG-13', 'R']
-    @title_sort = false
-    @release_date_sort = false
+   # @title_sort = false
+   #@release_date_sort = false
     
    # if params["ratings"].nil?
      # ratings_filter = @all_ratings
