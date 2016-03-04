@@ -29,6 +29,7 @@ class MoviesController < ApplicationController
       @title_sort = true
      return @movies = Movie.order(title: :asc)
     end
+    
     if params[:sort_by] == "date"
       @release_date_sort = true
     return @movies = Movie.order(release_date: :asc)
