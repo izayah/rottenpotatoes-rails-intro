@@ -22,13 +22,13 @@ class MoviesController < ApplicationController
     
     if @sorting_style == "alpha"
       @title_sort=true
-     return @movies = filtered.order(title: :asc)
+     return @movies = Movie.order(title: :asc)
     end
    if @sorting_style == "date"
      @release_date_sort=true
-   return @movies = filtered.order(release_date: :asc)
+   return @movies = Movie.order(release_date: :asc)
    end
-    @movies = filtered
+    @movies = Movie.all
   end
   
   def new
