@@ -27,7 +27,7 @@ class MoviesController < ApplicationController
      @release_date_sort=true
    return @movies = Movie.order(release_date: :asc)
    end
-    @movies = Movie.where("rating = ?", params[:ratings][rating] == '1')
+    @movies = Movie.where("rating = ?", params[:ratings] == '1')
   end
   
   def new
