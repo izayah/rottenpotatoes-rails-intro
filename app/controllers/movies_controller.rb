@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
     
     if @sorting_style == "alpha"
       @title_sort=true
-    return @movies = Movie.where("rating = ?", params[:ratings][rating].key).order(title: :asc)
+    return @movies = Movie.where("rating = ?", params[:ratings][rating]).order(title: :asc)
     end
    if @sorting_style == "date"
      @release_date_sort=true
