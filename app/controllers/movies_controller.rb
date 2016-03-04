@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
       ratings_filter = params["ratings"].keys
      end
      
-     @movies = Movie.where("rating =?", ratings_filter)
+     @movies = Movie.where("rating =?", params["ratings"].keys)
     
     if @sorting_style == "alpha"
       @title_sort=true
