@@ -14,8 +14,8 @@ class MoviesController < ApplicationController
     @all_ratings = ['G', 'PG', 'PG-13', 'R']
     @sorting_style = params[:sort_by]
     
-     if params["ratings"].nil?
-      ratings_filter = @all_ratings
+     #if params["ratings"].nil?
+      #ratings_filter = @all_ratings
     
     if @sorting_style == "alpha"
       @title_sort=true
