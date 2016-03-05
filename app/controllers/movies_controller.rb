@@ -20,9 +20,9 @@ class MoviesController < ApplicationController
     session[:params] ||= {}
     old_params = session[:params]
     
-    params[:sort_by] = old_params[:sort_by] if params[:sort_by].nil?
-    params[:ratings] = old_params[:ratings] if params[:ratings].nil?
-    redirect_to movies_path if({:sort_by => old_params[:sort_by], :ratings => old_params[:ratings]}) if (params[:sort_by].blank? && old[:sort_by].present?) || (params[:ratings].blank? && old_params[:ratings].present?)
+   # params[:sort_by] = old_params[:sort_by] if params[:sort_by].nil?
+   #params[:ratings] = old_params[:ratings] if params[:ratings].nil?
+    #redirect_to movies_path if({:sort_by => old_params[:sort_by], :ratings => old_params[:ratings]}) if (params[:sort_by].blank? && old[:sort_by].present?) || (params[:ratings].blank? && old_params[:ratings].present?)
     
      if params[:ratings].nil?
       ratings_filter = @all_ratings
@@ -30,7 +30,7 @@ class MoviesController < ApplicationController
       ratings_filter = params["ratings"].keys
      end
     
-    if params[:ratings] || params[:sort_by]
+    #if params[:ratings] || params[:sort_by]
     if @sorting_style == "alpha"
       @title_sort=true
       return @movies = Movie.where(:rating => ratings_filter).order(title: :asc)
@@ -44,7 +44,7 @@ class MoviesController < ApplicationController
      redirect_to movies_path :sort_by => session[:sort_by], :ratings => session[:ratings]
    # @movies = Movie.where(:rating => ratings_filter)
    end
-    end
+   # end
   def new
     # default: render 'new' template
   end
