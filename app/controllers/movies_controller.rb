@@ -29,10 +29,10 @@ class MoviesController < ApplicationController
       end
       @movies = Movie.where(:rating => ratings_filter)
     
-      if !params[:ratings] || !params[:sort_by]
-        flash.keep
-       redirect_to movies_path session[:ratings], session[:sort_by] 
-      end 
+      #if !params[:ratings] || !params[:sort_by]
+      #  flash.keep
+      # redirect_to movies_path session[:ratings], session[:sort_by] 
+      #end 
   end
   
   def create
