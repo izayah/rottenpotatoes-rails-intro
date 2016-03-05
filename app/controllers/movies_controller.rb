@@ -33,7 +33,7 @@ class MoviesController < ApplicationController
        return @movies = Movie.where(:rating => ratings_filter).order(release_date: :asc)
       end
       if  params[:ratings].nil?
-        params = session[:params]
+        #params = session[:params]
       @movies = Movie.where(params[:ratings] => ratings_filter)
       end
     
