@@ -34,7 +34,7 @@ class MoviesController < ApplicationController
       end
       if  params[:ratings].nil?
         params = session[:params]
-      @movies = Movie.where(params[:rating] => ratings_filter)
+      @movies = Movie.where(params[:ratings] => ratings_filter)
       end
     
     #else 
