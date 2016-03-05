@@ -23,7 +23,7 @@ class MoviesController < ApplicationController
       ratings_filter = params["ratings"].keys
      end
     
-    if params.has_key?[:sort_by]
+    #if params.has_key?[:sort_by]
     if @sorting_style == "alpha"
       @title_sort=true
       return @movies = Movie.where(:rating => ratings_filter).order(title: :asc)
@@ -33,7 +33,7 @@ class MoviesController < ApplicationController
    return @movies = Movie.where(:rating => ratings_filter).order(release_date: :asc)
    end
     @movies = Movie.where(:rating => ratings_filter)
-    end
+  end
   
   def new
     # default: render 'new' template
