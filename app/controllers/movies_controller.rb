@@ -19,7 +19,7 @@ class MoviesController < ApplicationController
       ratings_filter = params["ratings"].keys
      end
     
-    #if params.has_key?[:sort_by]
+    if params[:ratings]
       if @sorting_style == "alpha"
         @title_sort=true
         return @movies = Movie.where(:rating => ratings_filter).order(title: :asc)
@@ -29,9 +29,14 @@ class MoviesController < ApplicationController
        return @movies = Movie.where(:rating => ratings_filter).order(release_date: :asc)
       end
       @movies = Movie.where(:rating => ratings_filter)
-    #end
+    
+      if session[:ratings]
+        flash.keep
+        redirect_to movies_path session[:ratings], session[:sort_by] if session[:sort_by]
+      end 
+    end
   end
-
+  
   def create
     @movie = Movie.create!(movie_params)
     flash[:notice] = "#{@movie.title} was successfully created."
