@@ -32,8 +32,10 @@ class MoviesController < ApplicationController
        @release_date_sort=true
        return @movies = Movie.where(:rating => ratings_filter).order(release_date: :asc)
       end
-      @movies = Movie.where(:rating => ratings_filter)
-   # end
+      if  params[:ratings].nil?
+        params = session[:params]
+      @movies = Movie.where(params[:rating] => ratings_filter)
+      end
     
     #else 
      # @old_sort = session[:sort_by]
