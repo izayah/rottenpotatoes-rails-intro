@@ -8,7 +8,7 @@ class MoviesController < ApplicationController
     @saved_sort_by = session[:sort_by]
     @movie = Movie.find(id) # look up movie by unique ID
     # will render app/views/movies/show.<extension> by default
-   # session[:return_to] ||= request.referer
+    session[:return_to] ||= request.referer
     
     #redirect_to session.delete(:return_to)
   end
@@ -24,7 +24,7 @@ class MoviesController < ApplicationController
     
     if @sorting_style == "alpha"
       @title_sort=true
-    return @movies = Movie.where(:rating => ratings_filter).order(title: :asc)
+      return @movies = Movie.where(:rating => ratings_filter).order(title: :asc)
     end
    if @sorting_style == "date"
      @release_date_sort=true
