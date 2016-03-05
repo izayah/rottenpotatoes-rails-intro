@@ -15,6 +15,7 @@ class MoviesController < ApplicationController
      if params[:ratings].nil?
       ratings_filter = @all_ratings
      else
+      session[:sort_by] = params[:sort_by]
       ratings_filter = params["ratings"].keys
      end
     
