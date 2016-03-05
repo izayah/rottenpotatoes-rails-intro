@@ -20,13 +20,16 @@ class MoviesController < ApplicationController
     session[:params] ||= {}
     old_params = session[:params]
     
+    params[:sort_by] = old_params[:sort_by] if params[:sort_by].nil?
+    params[:ratings] = old_params[:ratings] if params[:ratings].nil?
+    
      if params[:ratings].nil?
       ratings_filter = @all_ratings
      else
       ratings_filter = params["ratings"].keys
      end
     
-    if params[:ratings]
+    if params[:ratings] || params[:sort_by]
     if @sorting_style == "alpha"
       @title_sort=true
       return @movies = Movie.where(:rating => ratings_filter).order(title: :asc)
@@ -35,7 +38,7 @@ class MoviesController < ApplicationController
      @release_date_sort=true
    return @movies = Movie.where(:rating => ratings_filter).order(release_date: :asc)
    end
-   if session[:ratings]
+   if session[:ratings] || session[:sort_by]
      flash.keep 
      redirect_to movies_path :sort_by => session[:sort_by], :ratings => session[:ratings]
    # @movies = Movie.where(:rating => ratings_filter)
