@@ -35,7 +35,7 @@ class MoviesController < ApplicationController
      @release_date_sort=true
    return @movies = Movie.where(:rating => ratings_filter).order(release_date: :asc)
    end
-   if session[:sort_by]
+   if session[:ratings]
      flash.keep 
      redirect_to movies_path :sort_by => session[:sort_by], :ratings => session[:ratings]
    # @movies = Movie.where(:rating => ratings_filter)
