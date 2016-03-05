@@ -11,7 +11,7 @@ class MoviesController < ApplicationController
     # will render app/views/movies/show.<extension> by default
     #session[:return_to] ||= request.referer
     
-   redirect_to movies_path @old_ratings, @old_sort
+   #redirect_to movies_path @old_ratings, @old_sort
   end
 
   def index
