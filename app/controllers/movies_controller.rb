@@ -17,13 +17,16 @@ class MoviesController < ApplicationController
   def index
     @all_ratings = ['G', 'PG', 'PG-13', 'R']
     @sorting_style = params[:sort_by]
+    session[:params] ||= {}
+    old_params = session[:params]
+    
      if params[:ratings].nil?
       ratings_filter = @all_ratings
      else
       ratings_filter = params["ratings"].keys
      end
     
-    #if params.has_key?[:sort_by]
+    #if params[:sort_by]
     if @sorting_style == "alpha"
       @title_sort=true
       return @movies = Movie.where(:rating => ratings_filter).order(title: :asc)
@@ -32,9 +35,12 @@ class MoviesController < ApplicationController
      @release_date_sort=true
    return @movies = Movie.where(:rating => ratings_filter).order(release_date: :asc)
    end
-    @movies = Movie.where(:rating => ratings_filter)
+   if session[:sort_by]
+     flash.keep 
+     redirect_to movies_path :sort_by => session[:sort_by], :ratings => session[:ratings]
+   # @movies = Movie.where(:rating => ratings_filter)
+   end
   end
-  
   def new
     # default: render 'new' template
   end
