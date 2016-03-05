@@ -5,19 +5,14 @@ class MoviesController < ApplicationController
 
   def show
     id = params[:id] # retrieve movie ID from URI route
-    #@saved_sort_by = session[:sort_by]
-   # @saved_ratings_filter = params["ratings"].keys
     @movie = Movie.find(id) # look up movie by unique ID
     # will render app/views/movies/show.<extension> by default
-    #session[:return_to] ||= request.referer
-    
-    #redirect_to session.delete(:return_to)
   end
 
   def index
     @all_ratings = ['G', 'PG', 'PG-13', 'R']
     @sorting_style = params[:sort_by]
-    session[:params] ||= {}
+   # session[:params] ||= {}
     old_params = session[:params]
     
    # params[:sort_by] = old_params[:sort_by] if params[:sort_by].nil?
