@@ -34,7 +34,7 @@ class MoviesController < ApplicationController
         flash.keep
         redirect_to movies_path session[:ratings], session[:sort_by] if session[:sort_by]
       end 
-    end
+    #end
   end
   
   def create
