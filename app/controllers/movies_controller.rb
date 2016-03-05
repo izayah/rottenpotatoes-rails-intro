@@ -38,9 +38,11 @@ class MoviesController < ApplicationController
     else 
       @old_sort = session[:sort_by]
       @old_ratings = session[ratings_filter]
-      redirect_to :back @old_ratings, @old_sort
-    return 
+      session.clear
+      redirect_to movies_path @old_ratings, @old_sort
     end
+    return 
+  end
 
   def new
     # default: render 'new' template
