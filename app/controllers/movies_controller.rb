@@ -5,8 +5,13 @@ class MoviesController < ApplicationController
 
   def show
     id = params[:id] # retrieve movie ID from URI route
+    #@saved_sort_by = session[:sort_by]
+   # @saved_ratings_filter = params["ratings"].keys
     @movie = Movie.find(id) # look up movie by unique ID
     # will render app/views/movies/show.<extension> by default
+    #session[:return_to] ||= request.referer
+    
+    #redirect_to session.delete(:return_to)
   end
 
   def index
@@ -19,24 +24,19 @@ class MoviesController < ApplicationController
      end
     
     if params.has_key?[:sort_by]
-      if @sorting_style == "alpha"
-        @title_sort=true
-        return @movies = Movie.where(:rating => ratings_filter).order(title: :asc)
-      end
-      if @sorting_style == "date"
-       @release_date_sort=true
-       return @movies = Movie.where(:rating => ratings_filter).order(release_date: :asc)
-      end
-      @movies = Movie.where(:rating => ratings_filter)
-    #end
-    
-    else 
-      @old_sort = session[:sort_by]
-      @old_ratings = session[ratings_filter]
-      session.clear
-      redirect_to movies_path @old_ratings, @old_sort
+    if @sorting_style == "alpha"
+      @title_sort=true
+      return @movies = Movie.where(:rating => ratings_filter).order(title: :asc)
     end
-    return 
+   if @sorting_style == "date"
+     @release_date_sort=true
+   return @movies = Movie.where(:rating => ratings_filter).order(release_date: :asc)
+   end
+    @movies = Movie.where(:rating => ratings_filter)
+    end
+  
+  def new
+    # default: render 'new' template
   end
 
   def create
