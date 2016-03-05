@@ -11,7 +11,7 @@ class MoviesController < ApplicationController
     # will render app/views/movies/show.<extension> by default
     session[:return_to] ||= request.referer
     
-    #redirect_to session.delete(:return_to)
+    redirect_to session.delete(:return_to)
   end
 
   def index
