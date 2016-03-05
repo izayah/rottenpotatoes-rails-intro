@@ -33,15 +33,15 @@ class MoviesController < ApplicationController
        return @movies = Movie.where(:rating => ratings_filter).order(release_date: :asc)
       end
       @movies = Movie.where(:rating => ratings_filter)
-    #end
-    
-    else 
-      @old_sort = session[:sort_by]
-      @old_ratings = session[ratings_filter]
-      session.clear
-      #redirect_to movies_path @old_ratings, @old_sort
     end
-    return 
+    
+    #else 
+     # @old_sort = session[:sort_by]
+     # @old_ratings = session[ratings_filter]
+     # session.clear
+      #redirect_to movies_path @old_ratings, @old_sort
+    #end
+    #return 
   end
 
   def new
