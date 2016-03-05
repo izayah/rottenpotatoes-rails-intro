@@ -19,7 +19,6 @@ class MoviesController < ApplicationController
       ratings_filter = params["ratings"].keys
      end
     
-    #if params[:ratings] #&& params[:sort_by]
       if @sorting_style == "alpha"
         @title_sort=true
         return @movies = Movie.where(:rating => ratings_filter).order(title: :asc)
@@ -28,13 +27,12 @@ class MoviesController < ApplicationController
        @release_date_sort=true
        return @movies = Movie.where(:rating => ratings_filter).order(release_date: :asc)
       end
-      #@movies = Movie.where(:rating => ratings_filter)
+      @movies = Movie.where(:rating => ratings_filter)
     
       if session[:ratings]
         flash.keep
-        redirect_to movies_path session[:ratings]#, (session[:sort_by] if session[:sort_by])
+       # redirect_to movies_path session[:ratings]#, (session[:sort_by] if session[:sort_by])
       end 
-    #end
   end
   
   def create
