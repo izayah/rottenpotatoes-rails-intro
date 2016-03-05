@@ -39,7 +39,7 @@ class MoviesController < ApplicationController
       @old_sort = session[:sort_by]
       @old_ratings = session[ratings_filter]
       session.clear
-      redirect_to movies_path @old_ratings, @old_sort
+      #redirect_to movies_path @old_ratings, @old_sort
     end
     return 
   end
