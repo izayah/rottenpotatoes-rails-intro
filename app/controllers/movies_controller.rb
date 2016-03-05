@@ -23,17 +23,25 @@ class MoviesController < ApplicationController
       ratings_filter = params["ratings"].keys
      end
     
-    if @sorting_style == "alpha"
-      @title_sort=true
-      return @movies = Movie.where(:rating => ratings_filter).order(title: :asc)
+    if params.has_key?[:sort_by]
+      if @sorting_style == "alpha"
+        @title_sort=true
+        return @movies = Movie.where(:rating => ratings_filter).order(title: :asc)
+      end
+      if @sorting_style == "date"
+       @release_date_sort=true
+       return @movies = Movie.where(:rating => ratings_filter).order(release_date: :asc)
+      end
+      @movies = Movie.where(:rating => ratings_filter)
+    #end
+    
+    else 
+      @old_sort = session[:sort_by]
+      @old_ratings = session[ratings_filter]
+      redirect_to :back @old_ratings, @old_sort
+    return 
     end
-   if @sorting_style == "date"
-     @release_date_sort=true
-   return @movies = Movie.where(:rating => ratings_filter).order(release_date: :asc)
-   end
-    @movies = Movie.where(:rating => ratings_filter)
-  end
-  
+
   def new
     # default: render 'new' template
   end
